@@ -12,6 +12,11 @@ var Enemy = function() {
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
+    var maxPosition = this.xRange[1];
+    this.x += this.speed * dt;
+    if (this.x > maxPosition) {
+        this.reset();
+    }
 
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
