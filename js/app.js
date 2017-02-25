@@ -37,6 +37,13 @@ Enemy.prototype.getRandomSpeed = function() {
 
     return Math.floor(Math.random() * (maxSpeed - minSpeed)) + minSpeed;
 }
+// // Place all enemy objects in an array called allEnemies
+var enemy1 = new Enemy();
+var enemy2 = new Enemy();
+var enemy3 = new Enemy();
+var allEnemies = [enemy1, enemy2, enemy3];
+
+
 
 // Now write your own player class
 var Player = function() {
@@ -58,23 +65,17 @@ Player.prototype.reset = function (x,y) {
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 }
-// // Place all enemy objects in an array called allEnemies
-var enemy1 = new Enemy();
-var enemy2 = new Enemy();
-var enemy3 = new Enemy();
-var allEnemies = [enemy1, enemy2, enemy3];
+
 
 
 
 function checkCollisions () {
 for(var i = 0; i < allEnemies.length; i++){
 if (Math.abs(player.x - allEnemies[i].x) < 60 && Math.abs(player.y - allEnemies[i].y) < 60){
-this.positionReset();
+player.reset(200, 400);
 }
 }
 };
-
-
 
 
 // Player movement up/down keys
@@ -125,5 +126,39 @@ document.addEventListener('keyup', function(e) {
     };
 
     player.handleInput(allowedKeys[e.keyCode]);
+});
+// not working yet // need to check for collision and collect points
+var Gem = function () {
+ this.sprite = "images/gem Blue.png";
+ this.x = 200;
+ this.y = 200;
+ this.reset();
+}
+var gem1 = new Gem();
+var gem2 = new Gem();
+var gem3 = new Gem();
+var allGems = [gem1, gem2, gem3];
+
+Gem.prototype.render = function() {
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+}
+function gemCollisions () {
+    for(var i = 0; i < allGems.length; i++) {
+        if (Math.abs(player.x - allGems[i].x) < 60 && Math.abs(player.y - allGems[i].y) < 60) {
+            player.win();
+        }
+    }
+};
+Gem.prototype.reset = function(){
+  this.x = 200;
+  this.y = 200;
+};
+
+Gem.prototype.update = function() {
+        this.reset();
+    }
+
+allGems.forEach(function(gem) {
+           gem.update();
 });
 
