@@ -81,6 +81,7 @@ var Engine = (function(global) {
     function update(dt) {
         updateEntities(dt);
         checkCollisions();
+        gemCollisions();
     }
 
     /* This is called by the update function and loops through all of the
@@ -95,6 +96,8 @@ var Engine = (function(global) {
             enemy.update(dt);
         });
         player.update();
+
+
     }
 
     /* This function initially draws the "game level", it will then call
@@ -143,7 +146,7 @@ var Engine = (function(global) {
      * tick. Its purpose is to then call the render functions you have defined
      * on your enemy and player entities within app.js
      */
-    function renderEntities() {
+ function renderEntities() {
         /* Loop through all of the objects within the allEnemies array and call
          * the render function you have defined.
          */
@@ -181,7 +184,7 @@ var Engine = (function(global) {
         'images/char-horn-girl.png',
         'images/Heart.png',
         'images/char-cat-girl.png',
-        'images/Gem Blue.png'
+        'images/gem-blue.png'
     ]);
     Resources.onReady(init);
 
