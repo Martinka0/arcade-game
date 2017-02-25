@@ -2,7 +2,7 @@ var Enemy = function() {
   this.sprite = 'images/enemy-bug.png';
   this.xRange = [-10, 500];
   this.yRange = [60, 140, 230];
-  this.speedRange = [30, 400];
+  this.speedRange = [30, 600];
   var startPos = this.xRange[0];
 
   this.x = startPos;
@@ -138,8 +138,8 @@ var Gem = function() {
   this.spriteRange = ["images/gem-blue.png", "images/Heart.png"];
 
   this.y = 200;
-  this.yRange = [60, 140, 230];
-  this.xRange = [50, 200, 350];
+  this.yRange = [60, 80, 100];
+  this.xRange = [60, 80, 350];
   this.x = startPos;
   var startPos = this.xRange[0];
 }
@@ -149,7 +149,7 @@ var gem3 = new Gem();
 var allGems = [gem1, gem2, gem3];
 
 Gem.prototype.render = function() {
-  ctx.drawImage(Resources.get(this.spriteRange), this.x, this.y);
+  ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 }
 
 function gemCollisions() {
@@ -175,7 +175,7 @@ Gem.prototype.getRandomSprite = function() {
 Gem.prototype.reset = function() {
   this.y = this.getRandomY();
   this.x = this.getRandomX();
-  this.spriteRange = this.getRandomSprite();
+  this.sprite = this.getRandomSprite();
 };
 
 
