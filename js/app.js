@@ -17,10 +17,10 @@ Enemy.prototype.reset = function() {
 Enemy.prototype.update = function(dt) {
     var maxPos = this.xRange[1];
     this.x += this.speed * dt;
-
     if (this.x > maxPos) {
         this.reset();
     }
+
 }
 
 Enemy.prototype.render = function() {
@@ -50,7 +50,7 @@ var Player = function() {
 
 
 
-Player.prototype.reset = function () {
+Player.prototype.reset = function (x,y) {
     this.x = 200;
     this.y = 400;
 }
@@ -62,24 +62,17 @@ Player.prototype.render = function() {
 var enemy1 = new Enemy();
 var enemy2 = new Enemy();
 var enemy3 = new Enemy();
-var allEnemies=[enemy1, enemy2, enemy3];
-// var allEnemies = [
-//     new Enemy(-200, 83, 170),
-//     new Enemy(-200, 166, 265),
-//     new Enemy(-200, 249, 225)
-// ];
+var allEnemies = [enemy1, enemy2, enemy3];
 
-// function checkCollisions (allEnemies, player) { // capitalize the the first letter of Collisions
-//     for(var i = 0; i < allEnemies.length; i++) {
-//         if (allEnemies[i].x < player.x + player.width &&
-//         allEnemies[i].x + allEnemies[i].width > player.x &&
-//         allEnemies[i].y < player.y + player.height &&
-//         allEnemies[i].height + allEnemies[i].y > player.y) {
-//         player.reset(200,400); // call the reset method on the player object and not on the Player constructor, pass x and y coordinates to the reset method
-//         }
-//     } // put the closing curly brace here
-// }
 
+
+function checkCollisions () {
+for(var i = 0; i < allEnemies.length; i++){
+if (Math.abs(player.x - allEnemies[i].x) < 60 && Math.abs(player.y - allEnemies[i].y) < 60){
+this.positionReset();
+}
+}
+};
 
 
 
