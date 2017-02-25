@@ -8,8 +8,6 @@ var Enemy = function() {
   this.x = startPos;
   this.y = this.getRandomY();
   this.speed = this.getRandomSpeed();
-  //this.reset();  *** not working because reset is not defined yet.
-  // *** Add starting position
 }
 
 Enemy.prototype.reset = function() {
@@ -43,7 +41,6 @@ Enemy.prototype.getRandomSpeed = function() {
 
   return Math.floor(Math.random() * (maxSpeed - minSpeed)) + minSpeed;
 }
-// // Place all enemy objects in an array called allEnemies
 var enemy1 = new Enemy();
 var enemy2 = new Enemy();
 var enemy3 = new Enemy();
@@ -51,18 +48,13 @@ var allEnemies = [enemy1, enemy2, enemy3];
 
 
 
-// Now write your own player class
 var Player = function() {
 
   this.sprite = 'images/char-horn-girl.png';
-  //this.reset();  *** not working because reset is not defined yet.
-  // *** Add starting position
   this.x = 200;
   this.y = 400;
   this.score = 0;
 }
-
-
 
 
 Player.prototype.reset = function(x, y) {
@@ -74,17 +66,15 @@ Player.prototype.render = function() {
   ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 }
 
-// *** Add win function when player gets a gem
+
 Player.prototype.win = function() {
   console.log("score");
   this.score += 10;
   document.getElementById('player-score').innerHTML = this.score;
 };
 
-// *** Could be a methos of player: player.prototype.checkCollisions
-//     if you do this don't forget to change player to this in function
-//     and change function call in engine.js
-function checkCollisions() {
+
+Player.prototype.checkCollisions = function () {
   for (var i = 0; i < allEnemies.length; i++) {
     if (Math.abs(player.x - allEnemies[i].x) < 60 && Math.abs(player.y - allEnemies[i].y) < 60) {
       player.reset(200, 400);
@@ -147,11 +137,11 @@ var Gem = function() {
 
   this.spriteRange = ["images/gem-blue.png", "images/Heart.png"];
 
-  // *** Add starting position (could be randomized like Enemy)
-  this.x = 200;
   this.y = 200;
   this.yRange = [60, 140, 230];
   this.xRange = [50, 200, 350];
+  this.x = startPos;
+  var startPos = this.xRange[0];
 }
 var gem1 = new Gem();
 var gem2 = new Gem();
