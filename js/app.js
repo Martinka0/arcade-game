@@ -1,3 +1,5 @@
+'use strict';
+
 var Enemy = function() {
     this.sprite = 'images/enemy-bug.png';
     this.xRange = [-10, 500];
@@ -73,11 +75,14 @@ Player.prototype.win = function() {
     document.getElementById('player-score').innerHTML = this.score;
 };
 
+var player = new Player();
 
 Player.prototype.checkCollisions = function() {
-    for (var i = 0; i < allEnemies.length; i++) {
-        if (Math.abs(player.x - allEnemies[i].x) < 60 && Math.abs(player.y - allEnemies[i].y) < 60) {
-            player.reset(200, 400);
+    var len = allEnemies.length;
+    for (var i = 0; i < len; i++) {
+      if (Math.abs(this.x - allEnemies[i].x) < 60 && Math.abs(this.y - allEnemies[i].y) < 60) {
+            console.log(this);
+            this.reset();
         }
     }
 };
@@ -101,7 +106,8 @@ Player.prototype.handleInput = function(key) {
             break;
     }
 
-}
+};
+
 //check position of Player against walls
 Player.prototype.update = function() {
     if (this.x < 0) {
@@ -116,8 +122,6 @@ Player.prototype.update = function() {
         this.y = 400;
     }
 };
-
-var player = new Player(200, 400);
 
 
 // This listens for key presses and sends the keys to your
