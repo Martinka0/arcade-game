@@ -6,7 +6,7 @@
   - Download or Clone Repository
   - Unzip
   - Open Index.html with Chrome or Firefox
- # How to play
+# How to play
 - Use the arrow keys to move.
 - Collect hearts and gems (10 points each).
 - Avoid Bugs.
