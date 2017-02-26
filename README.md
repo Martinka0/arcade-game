@@ -16,4 +16,4 @@ Game objects are implemented using JavaScript object-oriented programming.
 
 # Credits
 - Art assets and game engine provided by [Udacity](http://udacity.com).
-
+- Classic Arcade Game Clone is a project in Udacity's Front-End Web Developer Nanodegree Program.
